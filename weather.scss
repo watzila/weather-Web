@@ -1,0 +1,186 @@
+//新增字體
+@font-face {
+  font-family: "源柔ゴシック";
+  src: url(fonts/GenJyuuGothicX-Medium.ttf);
+}
+
+$fontColor: #8ad0d3;
+//字體設定
+@mixin fontSet($fontSize, $color) {
+  font: $fontSize + px "源柔ゴシック", "sans-serif";
+  color: $color;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+li {
+  list-style: none;
+}
+
+.main {
+  background: #e2e1e1;
+}
+
+.pageWrap {
+  position: relative;
+  height: 900px;
+  margin: 0 135px;
+  padding: 100px 0 50px;
+  //background: rgb(233, 233, 233);
+}
+
+.firstPage {
+  height: 1800px;
+  background: #afd1d2;
+  padding-top: 100px;
+
+  .firstWrap {
+    height: 900px;
+    margin: 0 135px;
+    //background: rgb(233, 233, 233);
+  }
+  .sun {
+    position: relative;
+    width: 566px;
+    height: 566px;
+    margin-left: 50%;
+
+    .eyes {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+
+      .l,
+      .r {
+        position: absolute;
+        display: block;
+        width: 11px;
+        height: 30px;
+        background: url(img/eye.svg) no-repeat center;
+      }
+      .l {
+        top: 45%;
+        left: 40%;
+      }
+      .r {
+        top: 45%;
+        left: 55%;
+      }
+    }
+  }
+  h1 {
+    margin-top: 8%;
+    @include fontSet(60, #fff);
+  }
+}
+
+.mainPage {
+  height: 900px;
+
+  .pageWrap {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  h3 {
+    margin-left: 20px;
+    padding-top: 20px;
+    @include fontSet(48, $fontColor);
+  }
+
+  .weather {
+    position: absolute;
+    top: 10%;
+    margin-left: 40px;
+    //background: lightcoral;
+
+    .weatherIMG {
+      width: 566px;
+      height: 566px;
+      background: url(img/sun.png);
+    }
+
+    .temperature {
+      padding-left: 90px;
+      background: white;
+
+      .t,
+      .weatherP {
+        float: left;
+        margin-left: 10%;
+
+        ul {
+          float: right;
+          margin: 35px 0 0 10px;
+
+          li:nth-child(1) {
+            border-bottom: 1px solid $fontColor;
+          }
+        }
+      }
+
+      span {
+        @include fontSet(100, $fontColor);
+      }
+
+      button {
+        border: 0;
+        outline: none;
+        cursor: pointer;
+        background: none;
+        @include fontSet(30, $fontColor);
+      }
+    }
+  }
+
+  .weatherInfo {
+    position: absolute;
+    top: 138px;
+    left: 50%;
+    @include fontSet(30, $fontColor);
+    line-height: 60px;
+    letter-spacing: 7.5px;
+  }
+
+  .date {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    @include fontSet(60, $fontColor);
+    text-align: right;
+    line-height: 60px;
+  }
+}
+
+.secondPage {
+  height: 1000px;
+
+  .currentW {
+    width: 566px;
+    height: 566px;
+    background-color: white;
+  }
+
+  .oneWeekW {
+    height: 300px;
+
+    .wIMG {
+      width: 100px;
+      height: 100px;
+      background-color: white;
+    }
+
+    li {
+      float: left;
+      width: 100px;
+      height: 200px;
+      background-color: $fontColor;
+      text-align: center;
+    }
+  }
+}
