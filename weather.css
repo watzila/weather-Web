@@ -26,6 +26,32 @@ li {
   padding: 100px 0 50px;
 }
 
+.eyes {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.eyes .l,
+.eyes .r {
+  position: absolute;
+  display: block;
+  width: 11px;
+  height: 30px;
+  background: url(img/eye.svg) no-repeat center;
+}
+
+.eyes .l {
+  top: 45%;
+  left: 40%;
+}
+
+.eyes .r {
+  top: 45%;
+  left: 55%;
+}
+
 .firstPage {
   height: 1800px;
   background: #afd1d2;
@@ -37,37 +63,11 @@ li {
   margin: 0 135px;
 }
 
-.firstPage .sun {
+.firstPage .weatherWrap {
   position: relative;
   width: 566px;
   height: 566px;
   margin-left: 50%;
-}
-
-.firstPage .sun .eyes {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.firstPage .sun .eyes .l,
-.firstPage .sun .eyes .r {
-  position: absolute;
-  display: block;
-  width: 11px;
-  height: 30px;
-  background: url(img/eye.svg) no-repeat center;
-}
-
-.firstPage .sun .eyes .l {
-  top: 45%;
-  left: 40%;
-}
-
-.firstPage .sun .eyes .r {
-  top: 45%;
-  left: 55%;
 }
 
 .firstPage h1 {
@@ -78,6 +78,24 @@ li {
 
 .mainPage {
   height: 900px;
+}
+
+.mainPage .searchBox input,
+.mainPage .searchBox button {
+  list-style: none;
+}
+
+.mainPage .searchBox input {
+  width: 150px;
+  height: 30px;
+}
+
+.mainPage .searchBox button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: url(img/searchIMG.svg) no-repeat center;
+  cursor: pointer;
 }
 
 .mainPage .pageWrap {
@@ -95,14 +113,20 @@ li {
 
 .mainPage .weather {
   position: absolute;
-  top: 10%;
+  top: 25%;
   margin-left: 40px;
 }
 
-.mainPage .weather .weatherIMG {
-  width: 566px;
-  height: 566px;
-  background: url(img/sun.png);
+.mainPage .weather .weatherWrap {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+.mainPage .weather .weatherWrap .weatherIMG {
+  width: 500px;
+  height: 500px;
+  background: url(img/sunIMG.svg);
 }
 
 .mainPage .weather .temperature {
@@ -113,7 +137,6 @@ li {
 .mainPage .weather .temperature .t,
 .mainPage .weather .temperature .weatherP {
   float: left;
-  margin-left: 10%;
 }
 
 .mainPage .weather .temperature .t ul,
@@ -125,6 +148,10 @@ li {
 .mainPage .weather .temperature .t ul li:nth-child(1),
 .mainPage .weather .temperature .weatherP ul li:nth-child(1) {
   border-bottom: 1px solid #8ad0d3;
+}
+
+.mainPage .weather .temperature .weatherP {
+  margin-left: 20%;
 }
 
 .mainPage .weather .temperature span {

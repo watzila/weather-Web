@@ -10,12 +10,13 @@ var weatherP = document.querySelector(".weatherP");
 var weatherInfos = document.querySelector(".weatherInfo").querySelectorAll("li");
 var date = document.querySelector(".date").querySelectorAll("li");
 
-var sun = document.querySelector(".sun");
-var eyeL = document.querySelector(".l");
-var eyeR = document.querySelector(".r");
+var weatherWrap = document.querySelectorAll(".weatherWrap");
+var eyeL = document.querySelectorAll(".l");
+var eyeR = document.querySelectorAll(".r");
 
 var currentNum;
 var currentT = true;
+var search = false;
 
 //獲取所有整理好的天氣資訊
 function updateInfos(data) {
@@ -64,7 +65,7 @@ function wxLite(num) {
     case 27:
     case 28:
       weatherP.innerHTML = "晴";
-      weatherIMG.className = "weatherIMG";
+      weatherIMG.style.background = "url(img/sunIMG.svg) no-repeat center";
       break;
 
     case 7:
@@ -88,42 +89,52 @@ function wxLite(num) {
 
 //淡出時
 function fadeOut(num) {
-  mainPage.style.opacity = "0";
-  setTimeout("changeInfos(" + num + ")", 2000);
+  if (!search) {
+    mainPage.style.opacity = "0";
+    setTimeout("changeInfos(" + num + ")", 2000);
+  }
 }
 
 //更換第一頁縣市天氣資訊
 function changeInfos(num) {
-  //console.log(num);
-  setInfos(infoLength - 1 == num ? 0 : ++num);
+  if (!search) {
+    //console.log(num);
+    setInfos(infoLength - 1 == num ? 0 : ++num);
+  }
 }
 
 //眼睛看著鼠標
-function eyesMove(e) {
+function eyesMove(e, i) {
   var eyeLX, eyeLRY, eyeRX;
   var x = e.clientX;
   var y = e.clientY;
-  var directionLX = (x - (sun.offsetLeft + sun.offsetWidth / 2)) * 5;
-  var directionLY = (y - (sun.offsetTop + sun.offsetHeight / 2)) * 5;
+  var directionLX = (x - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2)) * 5;
+  var directionLY = (y - (weatherWrap[i].offsetTop + weatherWrap[i].offsetHeight / 2)) * 5;
 
   if (directionLX < 0) {
-    eyeLX = directionLX / (sun.offsetLeft + sun.offsetWidth / 2);
-    eyeRX = (directionLX * 2) / (sun.offsetLeft + sun.offsetWidth / 2);
+    eyeLX = directionLX / (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2);
+    eyeRX = (directionLX * 2) / (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2);
   } else {
-    eyeLX = (directionLX * 2) / (window.innerWidth - (sun.offsetLeft + sun.offsetWidth / 2));
-    eyeRX = directionLX / (window.innerWidth - (sun.offsetLeft + sun.offsetWidth / 2));
+    eyeLX =
+      (directionLX * 2) /
+      (window.innerWidth - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2));
+    eyeRX =
+      directionLX /
+      (window.innerWidth - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2));
   }
   if (directionLY < 0) {
-    eyeLRY = directionLY / (sun.offsetTop + sun.offsetHeight / 2);
+    eyeLRY = directionLY / (weatherWrap[i].offsetTop + weatherWrap[i].offsetHeight / 2);
   } else {
-    eyeLRY = directionLY / (window.innerHeight - (sun.offsetTop + sun.offsetHeight / 2));
+    eyeLRY =
+      directionLY /
+      (window.innerHeight - (weatherWrap[i].offsetTop + weatherWrap[i].offsetHeight / 2));
   }
 
-  eyeL.style.left = 40 + eyeLX + "%";
-  eyeL.style.top = 45 + eyeLRY + "%";
+  eyeL[i].style.left = 40 + eyeLX + "%";
+  eyeL[i].style.top = 45 + eyeLRY + "%";
 
-  eyeR.style.left = 55 + eyeRX + "%";
-  eyeR.style.top = 45 + eyeLRY + "%";
+  eyeR[i].style.left = 55 + eyeRX + "%";
+  eyeR[i].style.top = 45 + eyeLRY + "%";
   //console.log(a);
 }
 
@@ -143,12 +154,16 @@ function convertT(CorF) {
 }
 
 //第一頁搜尋縣市天氣
-function searchW() {
-  var localValue = document.querySelector(".localValue").value;
+function searchW(localValue) {
   for (i = 0; i < getInfos.length; i++) {
     if (getInfos[i].location == localValue) {
-      localValue = "";
-      setTimeout("fadeOut(" + num + ")", 500);
+      search = true;
+      currentNum = i;
+      mainPage.style.opacity = "0";
+      setTimeout("setInfos(" + i + ")", 2000);
+      setTimeout(function () {
+        search = false;
+      }, 10000);
     } else {
       continue;
     }

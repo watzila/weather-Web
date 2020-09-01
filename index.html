@@ -8,17 +8,16 @@
     <title>天氣預報</title>
     <link rel="shortcut icon" type="image/x-icon" href="">
     <link rel="stylesheet" type="text/css" href="weather.css">
-    <script type="text/javascript" src="weatherInfo.js"></script>
   </head>
 
   <body>
     <div class="main">
       <!-- 第一頁總範圍 -->
-      <div class="firstPage" onmousemove="eyesMove(event)">
+      <div class="firstPage" onmousemove="eyesMove(event, 0)">
         <!-- 首頁內容範圍 -->
         <div class="firstWrap">
           <!-- 太陽 -->
-          <div class="sun">
+          <div class="weatherWrap">
             <img src="img/sun.png">
             <div class="eyes">
               <span class="l"></span>
@@ -31,15 +30,25 @@
       </div>
 
       <!-- 第二頁總範圍 -->
-      <div class="mainPage">
+      <div class="mainPage" onmousemove="eyesMove(event, 1)">
+        <form name="search" action="javascript:;" onsubmit="searchW(search.searchText.value)">
+          <div class="searchBox">
+            <input type="text" name="searchText" value="臺北市">
+            <button type="submit"></button>
+          </div>
+        </form>
         <div class="pageWrap">
           <h3 class="location">台中市</h3>
-          <form>
-
-          </form>
 
           <div class="weather">
-            <div class="weatherIMG"></div>
+            <div class="weatherWrap">
+              <div class="weatherIMG"></div>
+              <div class="eyes">
+                <span class="l"></span>
+                <span class="r"></span>
+              </div>
+            </div>
+
             <div class="temperature">
               <div class="t">
                 <span>30</span>
@@ -136,6 +145,7 @@
     </div>
 
     <script type="text/javascript" src="weather.js"></script>
+    <script type="text/javascript" src="weatherInfo.js"></script>
   </body>
 
 </html>
