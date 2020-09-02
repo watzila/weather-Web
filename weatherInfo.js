@@ -6,7 +6,7 @@ var requestURL =
   "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWB-422B0FA3-E374-492D-B54A-4D8942BE2B7E&format=JSON";
 //創建新的伺服器連結
 var request = new XMLHttpRequest();
-//請求伺服器連結，get獲得資料、requestURL是上面宣告的網址
+//請求伺服器連結，requestURL是上面宣告的網址
 request.open("get", requestURL);
 //得到的資料已JSON格式解讀
 request.responseType = "json";

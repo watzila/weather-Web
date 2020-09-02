@@ -27,9 +27,9 @@ li {
 
 .pageWrap {
   position: relative;
-  height: 900px;
+  height: 100%;
   margin: 0 135px;
-  padding: 100px 0 50px;
+  //padding: 100px 0 50px;
   //background: rgb(216, 147, 147);
 }
 
@@ -79,22 +79,39 @@ li {
 }
 
 .mainPage {
-  height: 900px;
+  position: relative;
+  //height: 900px;
+  padding-top: 100px;
 
+  input,
+  .searchBTN {
+    list-style: none;
+    border: 0;
+  }
   .searchBox {
-    input,
-    button {
-      list-style: none;
-    }
+    position: absolute;
+    top: 10%;
+    right: 135px;
+    //width: 200px;
+    height: 60px;
+    padding: 10px;
+    border: 5px solid #cccccc;
+    box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #fff, 4px 4px 10px #ccc inset,
+      -4px -4px 5px #fff inset;
+    z-index: 1;
 
     input {
       width: 150px;
-      height: 30px;
+      height: 100%;
+      padding: 10px;
+      text-align: center;
+      background-color: transparent;
+      @include fontSet(20, $fontColor);
     }
-    button {
-      width: 30px;
-      height: 30px;
-      border: 0;
+    .searchBTN {
+      width: 20px;
+      height: 20px;
+      //vertical-align: middle;
       background: url(img/searchIMG.svg) no-repeat center;
       cursor: pointer;
     }
@@ -106,16 +123,15 @@ li {
   }
 
   h3 {
-    margin-left: 20px;
-    padding-top: 20px;
+    //margin-left: 20px;
+    //padding-top: 20px;
     @include fontSet(48, $fontColor);
   }
 
   .weather {
-    position: absolute;
-    top: 25%;
-    margin-left: 40px;
-    //background: lightcoral;
+    //position: absolute;
+    //top: 10%;
+    margin: 40px 40px 100px;
 
     .weatherWrap {
       position: relative;
@@ -130,9 +146,10 @@ li {
     }
     .temperature {
       padding-left: 90px;
-      background: white;
+      margin-top: 50px;
+      overflow: hidden;
 
-      .t,
+      .currentT,
       .weatherP {
         float: left;
 
@@ -146,7 +163,7 @@ li {
         }
       }
       .weatherP {
-        margin-left: 20%;
+        margin-left: 5%;
       }
 
       span {
@@ -183,29 +200,95 @@ li {
 }
 
 .secondPage {
-  height: 1000px;
+  //height: 1000px;
+  padding-top: 100px;
+  //background: lightcoral;
 
-  .currentW {
-    width: 566px;
-    height: 566px;
-    background-color: white;
+  .currentInfo {
+    height: 100%;
+    margin-bottom: 7%;
+    overflow: hidden;
+
+    .weatherWrap {
+      position: relative;
+      right: 5%;
+      float: right;
+      width: 500px;
+      height: 500px;
+      background: url(img/sunIMG.svg) no-repeat center;
+    }
+
+    .localInfos {
+      padding: 1.5% 0 0 10%;
+      @include fontSet(30, $fontColor);
+      line-height: 60px;
+      letter-spacing: 7.5px;
+    }
   }
 
   .oneWeekW {
-    height: 300px;
+    position: relative;
+    width: 520px;
+    height: 260px;
+    //border-radius: 50%;
+    margin: 0 auto;
+    overflow: hidden;
 
-    .wIMG {
-      width: 100px;
-      height: 100px;
-      background-color: white;
-    }
-
-    li {
-      float: left;
-      width: 100px;
-      height: 200px;
-      background-color: $fontColor;
+    .oneDayW {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 520px;
       text-align: center;
+      //transform: rotate(60deg);
+
+      .wrapW {
+        position: absolute;
+        top: 8%;
+        left: 34%;
+        width: 29%;
+        height: 16%;
+        //background: rgba(255, 0, 0, 0.233);
+
+        .currentIMG {
+          height: 100%;
+          background: url(img/sunIMG.svg) no-repeat;
+        }
+
+        .dayInfos {
+          position: absolute;
+          top: 0;
+          right: 0;
+
+          p:nth-child(1) {
+            @include fontSet(40, white);
+          }
+
+          p:nth-child(2) {
+            @include fontSet(20, white);
+          }
+        }
+      }
     }
+  }
+
+  .oneWeekW:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 520px;
+    height: 265px;
+    background: url(img/targetBG.svg) no-repeat center;
+  }
+
+  .oneWeekW:after {
+    content: "";
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 520px;
+    height: 225px;
+    background: url(img/targetIMG.svg) no-repeat center;
   }
 }

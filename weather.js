@@ -1,13 +1,15 @@
 var getInfos = null;
+var getInfos2 = null;
 var infoLength = null;
 var dt = new Date();
 
 var mainPage = document.querySelector(".mainPage").querySelector(".pageWrap");
 var l = document.querySelector(".location");
 var weatherIMG = document.querySelector(".weatherIMG");
-var t = document.querySelector(".t").querySelector("span");
+var currentT = document.querySelector(".currentT").querySelector("span");
 var weatherP = document.querySelector(".weatherP");
 var weatherInfos = document.querySelector(".weatherInfo").querySelectorAll("li");
+var localInfos = document.querySelector(".localInfos").querySelectorAll("li");
 var date = document.querySelector(".date").querySelectorAll("li");
 
 var weatherWrap = document.querySelectorAll(".weatherWrap");
@@ -18,9 +20,14 @@ var currentNum;
 var currentT = true;
 var search = false;
 
-//獲取所有整理好的天氣資訊
+//獲取縣市所有整理好的天氣資訊
 function updateInfos(data) {
   getInfos = data;
+}
+
+//獲取台中市區所有整理好的天氣資訊
+function updateInfos2(data) {
+  getInfos2 = data;
 }
 
 //設定第一頁所有顯示的天氣資訊
@@ -28,25 +35,49 @@ function setInfos(num) {
   currentNum = num;
   currentT = true;
   l.innerHTML = getInfos[num].location;
-  t.innerHTML = Math.floor((parseInt(getInfos[num].minT) + parseInt(getInfos[num].maxT)) / 2);
+  currentT.innerHTML = Math.round(
+    (parseInt(getInfos[num].minT) + parseInt(getInfos[num].maxT)) / 2
+  );
   wxLite(num);
 
   weatherInfos[0].querySelector(".pop").innerHTML = getInfos[num].pop + "%";
   weatherInfos[1].querySelector(".ci").innerHTML = getInfos[num].ci;
-  weatherInfos[2].querySelector(".wx").innerHTML = getInfos[num].wx;
+  weatherInfos[2].querySelector(".currentWX").innerHTML = getInfos[num].wx;
   weatherInfos[3].querySelector(".minT").innerHTML = getInfos[num].minT + "˚C";
   weatherInfos[4].querySelector(".maxT").innerHTML = getInfos[num].maxT + "˚C";
 
   date[0].querySelector(".year").innerHTML = dt.getFullYear();
   date[1].querySelector(".month").innerHTML = monthEnglish[dt.getMonth()];
-  date[2].querySelector(".day").innerHTML = dt.getDate();
+  date[2].querySelector(".day").innerHTML = dt.getDate() < 10 ? "0" + dt.getDate() : dt.getDate();
   date[3].querySelector(".week").innerHTML = dayEnglish[dt.getUTCDay()];
 
   if (infoLength == null) {
     infoLength = getInfos.length;
   }
+
   mainPage.style.opacity = "1";
   setTimeout("fadeOut(" + num + ")", 10000);
+}
+
+//設定第二頁所有顯示的天氣資訊
+function setInfos2(num) {
+  //currentNum = num;
+  //currentT = true;
+  //l.innerHTML = getInfos[num].location;
+
+  //wxLite(num);
+
+  localInfos[0].querySelector("span").innerHTML = getInfos2[num].wx[0];
+  localInfos[1].querySelector("span").innerHTML = getInfos2[num].t[0] + "˚C";
+  localInfos[2].querySelector("span").innerHTML = getInfos2[num].at[0] + "˚C";
+  localInfos[3].querySelector("span").innerHTML = getInfos2[num].uvi[0];
+  localInfos[4].querySelector("span").innerHTML = getInfos2[num].rh[0] + "%";
+  localInfos[5].querySelector("span").innerHTML = getInfos2[num].pop12h[0] + "%";
+  localInfos[6].querySelector("span").innerHTML = getInfos2[num].wd[0];
+
+  //if (infoLength == null) {
+  //  infoLength = getInfos.length;
+  //}
 }
 
 //判斷晴、陰、雨、雪天

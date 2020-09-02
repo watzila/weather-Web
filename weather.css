@@ -21,9 +21,8 @@ li {
 
 .pageWrap {
   position: relative;
-  height: 900px;
+  height: 100%;
   margin: 0 135px;
-  padding: 100px 0 50px;
 }
 
 .eyes {
@@ -77,23 +76,41 @@ li {
 }
 
 .mainPage {
-  height: 900px;
+  position: relative;
+  padding-top: 100px;
 }
 
-.mainPage .searchBox input,
-.mainPage .searchBox button {
+.mainPage input,
+.mainPage .searchBTN {
   list-style: none;
+  border: 0;
+}
+
+.mainPage .searchBox {
+  position: absolute;
+  top: 10%;
+  right: 135px;
+  height: 60px;
+  padding: 10px;
+  border: 5px solid #cccccc;
+  -webkit-box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #fff, 4px 4px 10px #ccc inset, -4px -4px 5px #fff inset;
+          box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #fff, 4px 4px 10px #ccc inset, -4px -4px 5px #fff inset;
+  z-index: 1;
 }
 
 .mainPage .searchBox input {
   width: 150px;
-  height: 30px;
+  height: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  font: 20px "源柔ゴシック", "sans-serif";
+  color: #8ad0d3;
 }
 
-.mainPage .searchBox button {
-  width: 30px;
-  height: 30px;
-  border: 0;
+.mainPage .searchBox .searchBTN {
+  width: 20px;
+  height: 20px;
   background: url(img/searchIMG.svg) no-repeat center;
   cursor: pointer;
 }
@@ -105,16 +122,12 @@ li {
 }
 
 .mainPage h3 {
-  margin-left: 20px;
-  padding-top: 20px;
   font: 48px "源柔ゴシック", "sans-serif";
   color: #8ad0d3;
 }
 
 .mainPage .weather {
-  position: absolute;
-  top: 25%;
-  margin-left: 40px;
+  margin: 40px 40px 100px;
 }
 
 .mainPage .weather .weatherWrap {
@@ -131,27 +144,28 @@ li {
 
 .mainPage .weather .temperature {
   padding-left: 90px;
-  background: white;
+  margin-top: 50px;
+  overflow: hidden;
 }
 
-.mainPage .weather .temperature .t,
+.mainPage .weather .temperature .currentT,
 .mainPage .weather .temperature .weatherP {
   float: left;
 }
 
-.mainPage .weather .temperature .t ul,
+.mainPage .weather .temperature .currentT ul,
 .mainPage .weather .temperature .weatherP ul {
   float: right;
   margin: 35px 0 0 10px;
 }
 
-.mainPage .weather .temperature .t ul li:nth-child(1),
+.mainPage .weather .temperature .currentT ul li:nth-child(1),
 .mainPage .weather .temperature .weatherP ul li:nth-child(1) {
   border-bottom: 1px solid #8ad0d3;
 }
 
 .mainPage .weather .temperature .weatherP {
-  margin-left: 20%;
+  margin-left: 5%;
 }
 
 .mainPage .weather .temperature span {
@@ -189,30 +203,94 @@ li {
 }
 
 .secondPage {
-  height: 1000px;
+  padding-top: 100px;
 }
 
-.secondPage .currentW {
-  width: 566px;
-  height: 566px;
-  background-color: white;
+.secondPage .currentInfo {
+  height: 100%;
+  margin-bottom: 7%;
+  overflow: hidden;
+}
+
+.secondPage .currentInfo .weatherWrap {
+  position: relative;
+  right: 5%;
+  float: right;
+  width: 500px;
+  height: 500px;
+  background: url(img/sunIMG.svg) no-repeat center;
+}
+
+.secondPage .currentInfo .localInfos {
+  padding: 1.5% 0 0 10%;
+  font: 30px "源柔ゴシック", "sans-serif";
+  color: #8ad0d3;
+  line-height: 60px;
+  letter-spacing: 7.5px;
 }
 
 .secondPage .oneWeekW {
-  height: 300px;
+  position: relative;
+  width: 520px;
+  height: 260px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.secondPage .oneWeekW .wIMG {
-  width: 100px;
-  height: 100px;
-  background-color: white;
-}
-
-.secondPage .oneWeekW li {
-  float: left;
-  width: 100px;
-  height: 200px;
-  background-color: #8ad0d3;
+.secondPage .oneWeekW .oneDayW {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 520px;
   text-align: center;
+}
+
+.secondPage .oneWeekW .oneDayW .wrapW {
+  position: absolute;
+  top: 8%;
+  left: 34%;
+  width: 29%;
+  height: 16%;
+}
+
+.secondPage .oneWeekW .oneDayW .wrapW .currentIMG {
+  height: 100%;
+  background: url(img/sunIMG.svg) no-repeat;
+}
+
+.secondPage .oneWeekW .oneDayW .wrapW .dayInfos {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.secondPage .oneWeekW .oneDayW .wrapW .dayInfos p:nth-child(1) {
+  font: 40px "源柔ゴシック", "sans-serif";
+  color: white;
+}
+
+.secondPage .oneWeekW .oneDayW .wrapW .dayInfos p:nth-child(2) {
+  font: 20px "源柔ゴシック", "sans-serif";
+  color: white;
+}
+
+.secondPage .oneWeekW:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 265px;
+  background: url(img/targetBG.svg) no-repeat center;
+}
+
+.secondPage .oneWeekW:after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 520px;
+  height: 225px;
+  background: url(img/targetIMG.svg) no-repeat center;
 }
 /*# sourceMappingURL=weather.css.map */

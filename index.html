@@ -31,12 +31,14 @@
 
       <!-- 第二頁總範圍 -->
       <div class="mainPage" onmousemove="eyesMove(event, 1)">
-        <form name="search" action="javascript:;" onsubmit="searchW(search.searchText.value)">
-          <div class="searchBox">
-            <input type="text" name="searchText" value="臺北市">
-            <button type="submit"></button>
-          </div>
-        </form>
+        <div>
+          <form name="search" action="javascript:;" onsubmit="searchW(search.searchText.value)">
+            <div class="searchBox">
+              <button type="submit" class="searchBTN"></button>
+              <input type="text" name="searchText" value="臺北市">
+            </div>
+          </form>
+        </div>
         <div class="pageWrap">
           <h3 class="location">台中市</h3>
 
@@ -50,7 +52,7 @@
             </div>
 
             <div class="temperature">
-              <div class="t">
+              <div class="currentT">
                 <span>30</span>
                 <ul>
                   <li>
@@ -70,7 +72,7 @@
             <ul>
               <li>降雨機率:<span class="pop">20%</span></li>
               <li>舒適度:<span class="ci">舒適</span></li>
-              <li>天氣現象:<span class="wx">晴天</span></li>
+              <li>天氣現象:<span class="currentWX">晴天</span></li>
               <li>最低溫度:<span class="minT">20˚C</span></li>
               <li>最高溫度:<span class="maxT">30˚C</span></li>
             </ul>
@@ -87,65 +89,48 @@
         </div>
       </div>
 
-      <div class="secondPage">
+      <div class="secondPage" onmousemove="eyesMove(event, 2)">
         <div class="pageWrap">
-          <div class="currentW"></div>
+          <div class="currentInfo">
+            <div class="weatherWrap">
+              <div class="weatherIMG"></div>
+              <div class="eyes">
+                <span class="l"></span>
+                <span class="r"></span>
+              </div>
+            </div>
 
-          <div class="">
-            <ul>
-              <li>降雨機率:<span class="pop">20%</span></li>
-              <li>舒適度:<span class="ci">舒適</span></li>
-              <li>天氣現象:<span class="wx">晴天</span></li>
-              <li>最低溫度:<span class="minT">20˚C</span></li>
-              <li>最高溫度:<span class="maxT">30˚C</span></li>
-            </ul>
+            <div class="localInfos">
+              <ul>
+                <li>天氣現象:<span>晴天</span></li>
+                <li>溫度:<span>20˚C</span></li>
+                <li>體感溫度:<span>30˚C</span></li>
+                <li>紫外線:<span>過量級</span></li>
+                <li>濕度:<span>64%</span></li>
+                <li>降雨機率:<span>20%</span></li>
+                <li>風向:<span>西南風</span></li>
+              </ul>
+            </div>
           </div>
 
           <div class="oneWeekW">
-            <ul>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-              <li>
-                <div class="wIMG"></div>
-                <p>8/27</p>
-                <p>(四)</p>
-              </li>
-            </ul>
+            <div class="oneDayW">
+              <div class="wrapW">
+                <div class="currentIMG"></div>
+                <div class="dayInfos">
+                  <p>晴</p>
+                  <p>9/2(三)</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <script type="text/javascript" src="weather.js"></script>
     <script type="text/javascript" src="weatherInfo.js"></script>
+    <script type="text/javascript" src="weatherInfo2.js"></script>
+    <script type="text/javascript" src="weather.js"></script>
   </body>
 
 </html>
