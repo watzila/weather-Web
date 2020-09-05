@@ -57,3 +57,4 @@ var monthEnglish = [
 ];
 
 var dayEnglish = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+var dayChinese = ["日", "一", "二", "三", "四", "五", "六"];

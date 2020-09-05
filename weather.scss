@@ -21,6 +21,15 @@ li {
   list-style: none;
 }
 
+input,
+button,
+select,
+option {
+  outline: none;
+  border: 0;
+  background: none;
+}
+
 .main {
   background: #e2e1e1;
 }
@@ -83,12 +92,8 @@ li {
   //height: 900px;
   padding-top: 100px;
 
-  input,
-  .searchBTN {
-    list-style: none;
-    border: 0;
-  }
-  .searchBox {
+  .searchBox,
+  select {
     position: absolute;
     top: 10%;
     right: 135px;
@@ -101,19 +106,26 @@ li {
     z-index: 1;
 
     input {
-      width: 150px;
+      width: 170px;
       height: 100%;
-      padding: 10px;
+      padding: 10px 10px 10px 30px;
       text-align: center;
-      background-color: transparent;
+      letter-spacing: 10px;
       @include fontSet(20, $fontColor);
     }
     .searchBTN {
+      position: absolute;
+      top: 30%;
+      left: 8%;
       width: 20px;
       height: 20px;
       //vertical-align: middle;
       background: url(img/searchIMG.svg) no-repeat center;
       cursor: pointer;
+    }
+    .searchBTN:hover {
+      transform: scale(1.3);
+      transition: transform 0.2s ease-in-out;
     }
   }
 
@@ -171,10 +183,7 @@ li {
       }
 
       button {
-        border: 0;
-        outline: none;
         cursor: pointer;
-        background: none;
         @include fontSet(30, $fontColor);
       }
     }
@@ -209,6 +218,10 @@ li {
     margin-bottom: 7%;
     overflow: hidden;
 
+    option {
+      outline: none;
+    }
+
     .weatherWrap {
       position: relative;
       right: 5%;
@@ -226,29 +239,56 @@ li {
     }
   }
 
+  .changeW {
+    text-align: center;
+
+    button {
+      width: 10%;
+      padding: 1%;
+      margin-left: 1%;
+      background-color: red;
+      cursor: pointer;
+      z-index: 1;
+    }
+  }
+
   .oneWeekW {
     position: relative;
     width: 520px;
     height: 260px;
-    //border-radius: 50%;
     margin: 0 auto;
     overflow: hidden;
+
+    #one,
+    #three {
+      transition: top 0.3s ease-in, left 0.3s ease-out;
+    }
+    #two,
+    #four {
+      transition: top 0.3s ease-out, left 0.3s ease-in;
+    }
 
     .oneDayW {
       position: relative;
       overflow: hidden;
       width: 100%;
       height: 520px;
+      border-radius: 50%;
       text-align: center;
-      //transform: rotate(60deg);
 
-      .wrapW {
+      .wrapW,
+      .wrapW2,
+      .wrapW3,
+      .wrapW4 {
         position: absolute;
-        top: 8%;
-        left: 34%;
         width: 29%;
-        height: 16%;
-        //background: rgba(255, 0, 0, 0.233);
+        height: 17%;
+        border: 0;
+        outline: none;
+        z-index: 1;
+        cursor: pointer;
+        background: none;
+        //transform: rotate(-60deg);
 
         .currentIMG {
           height: 100%;
@@ -286,9 +326,30 @@ li {
     content: "";
     position: absolute;
     top: 40px;
-    left: 0;
-    width: 520px;
-    height: 225px;
+    left: 50%;
+    width: 270px;
+    height: 230px;
+    transform: translateX(-50%);
     background: url(img/targetIMG.svg) no-repeat center;
   }
+
+  //.wrapW {
+  //  top: 30%;
+  //  left: 5%;
+  //}
+
+  //.wrapW2 {
+  //  top: 5%;
+  //  left: 35%;
+  //}
+
+  //.wrapW3 {
+  //  top: 30%;
+  //  left: 65%;
+  //}
+
+  //.wrapW4 {
+  //  top: 55%;
+  //  left: 35%;
+  //}
 }

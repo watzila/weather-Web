@@ -27,9 +27,10 @@ function locatInfos2(localWeathers) {
     var data2 = {
       location: infoLs2[i].locationName,
       wx: getWeekWeather(localW[6]),
+      wxV: getWeekWeather(localW[6], 3),
       t: getWeekWeather(localW[1]),
       at: getWeekBodyT(localW[11], localW[5]),
-      uvi: getWeekUV(localW[9]),
+      uvi: getWeekWeather(localW[9], 2),
       rh: getWeekWeather(localW[2]),
       pop12h: getWeekWeather(localW[0]),
       wd: getWeekWeather(localW[13]),
@@ -38,12 +39,12 @@ function locatInfos2(localWeathers) {
     dataOK2.push(data2);
     //console.log(wxs[0]);
   }
-  console.log(localW);
+  console.log(dataOK2);
   updateInfos2(dataOK2);
-  setInfos2(11);
+  setInfos2(25);
 }
 
-//取出一個禮拜的當前資料
+//計算一個禮拜的當前平均體感溫度
 function getWeekBodyT(minT, maxT) {
   var infosOK = [];
   for (j = 0; j < minT.time.length; j++) {
@@ -58,26 +59,40 @@ function getWeekBodyT(minT, maxT) {
   return infosOK;
 }
 
-//計算一個禮拜的當前平均體感溫度
-function getWeekWeather(whatInfo) {
+//取出一個禮拜的當前資料
+function getWeekWeather(whatInfo, type = 1) {
   var infosOK = [];
-  for (j = 0; j < whatInfo.time.length; j++) {
-    if (j % 2 == 0) {
-      var thisInfo = whatInfo.time[j].elementValue[0].value;
-      infosOK.push(thisInfo);
-    } else {
-      continue;
-    }
-  }
-  return infosOK;
-}
+  switch (type) {
+    case 1:
+      for (j = 0; j < whatInfo.time.length - 1; j++) {
+        if (j % 2 != 0) {
+          var thisInfo = whatInfo.time[j].elementValue[0].value;
+          infosOK.push(thisInfo);
+        } else {
+          continue;
+        }
+      }
+      return infosOK;
+      break;
 
-//取出一個禮拜的紫外線資料
-function getWeekUV(whatInfo) {
-  var infosOK = [];
-  for (j = 0; j < whatInfo.time.length; j++) {
-    var thisInfo = whatInfo.time[j].elementValue[1].value;
-    infosOK.push(thisInfo);
+    case 2:
+      for (j = 0; j < whatInfo.time.length; j++) {
+        var thisInfo = whatInfo.time[j].elementValue[1].value;
+        infosOK.push(thisInfo);
+      }
+      return infosOK;
+      break;
+
+    case 3:
+      for (j = 0; j < whatInfo.time.length - 1; j++) {
+        if (j % 2 != 0) {
+          var thisInfo = whatInfo.time[j].elementValue[1].value;
+          infosOK.push(thisInfo);
+        } else {
+          continue;
+        }
+      }
+      return infosOK;
+      break;
   }
-  return infosOK;
 }

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="天氣預報">
     <title>天氣預報</title>
-    <link rel="shortcut icon" type="image/x-icon" href="">
+    <!--<link rel="shortcut icon" type="image/x-icon" href="">-->
     <link rel="stylesheet" type="text/css" href="weather.css">
   </head>
 
@@ -92,6 +92,41 @@
       <div class="secondPage" onmousemove="eyesMove(event, 2)">
         <div class="pageWrap">
           <div class="currentInfo">
+            <form>
+              <div class="searchBox">
+                <select name="local">
+                  <option value="0">外埔區</option>
+                  <option value="1">大安區</option>
+                  <option value="2">石岡區</option>
+                  <option value="3">沙鹿區</option>
+                  <option value="4">清水區</option>
+                  <option value="5">后里區</option>
+                  <option value="6">梧棲區</option>
+                  <option value="7">潭子區</option>
+                  <option value="8">神岡區</option>
+                  <option value="9">新社區</option>
+                  <option value="10">大雅區</option>
+                  <option value="11">大甲區</option>
+                  <option value="12">東勢區</option>
+                  <option value="13">東區</option>
+                  <option value="14">龍井區</option>
+                  <option value="15">中區</option>
+                  <option value="16">霧峰區</option>
+                  <option value="17">西區</option>
+                  <option value="18">烏日區</option>
+                  <option value="19">南區</option>
+                  <option value="20">大肚區</option>
+                  <option value="21">西屯區</option>
+                  <option value="22">和平區</option>
+                  <option value="23">北區</option>
+                  <option value="24">北屯區</option>
+                  <option value="25" selected>太平區</option>
+                  <option value="26">南屯區</option>
+                  <option value="27">大里區</option>
+                  <option value="28">豐原區</option>
+                </select>
+              </div>
+            </form>
             <div class="weatherWrap">
               <div class="weatherIMG"></div>
               <div class="eyes">
@@ -102,26 +137,55 @@
 
             <div class="localInfos">
               <ul>
-                <li>天氣現象:<span>晴天</span></li>
-                <li>溫度:<span>20˚C</span></li>
-                <li>體感溫度:<span>30˚C</span></li>
-                <li>紫外線:<span>過量級</span></li>
-                <li>濕度:<span>64%</span></li>
-                <li>降雨機率:<span>20%</span></li>
-                <li>風向:<span>西南風</span></li>
+                <li>天氣現象:<span></span></li>
+                <li>溫度:<span></span></li>
+                <li>體感溫度:<span></span></li>
+                <li>紫外線:<span></span></li>
+                <li>濕度:<span></span></li>
+                <li>降雨機率:<span></span></li>
+                <li>風向:<span></span></li>
               </ul>
             </div>
           </div>
 
+          <div class="changeW">
+            <button onclick="changeW(false)">leftTurn</button>
+            <button onclick="changeW()">rightTurn</button>
+          </div>
+
           <div class="oneWeekW">
             <div class="oneDayW">
-              <div class="wrapW">
+              <button class="wrapW" style="top: 30%; left: 5%;" id="one" data-id="0">
+                <div class="currentIMG"></div>
+                <div class="dayInfos">
+                  <p>晴</p>
+                  <p>9/1(三)</p>
+                </div>
+              </button>
+
+              <button class="wrapW2" style="top: 5%; left: 35%;" id="two" data-id="1">
                 <div class="currentIMG"></div>
                 <div class="dayInfos">
                   <p>晴</p>
                   <p>9/2(三)</p>
                 </div>
-              </div>
+              </button>
+
+              <button class="wrapW3" style="top: 30%; left: 65%;" id="three" data-id="2">
+                <div class="currentIMG"></div>
+                <div class="dayInfos">
+                  <p>晴</p>
+                  <p>9/3(三)</p>
+                </div>
+              </button>
+
+              <button class="wrapW4" style="top: 55%; left: 35%;" id="four" data-id="3">
+                <div class="currentIMG"></div>
+                <div class="dayInfos">
+                  <p>晴</p>
+                  <p>9/4(三)</p>
+                </div>
+              </button>
             </div>
           </div>
         </div>
