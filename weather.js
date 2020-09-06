@@ -5,8 +5,9 @@ var infoLength = null;
 var dt = new Date(); //當天日期
 
 var mainPage = document.querySelector(".mainPage").querySelector(".pageWrap");
+var secondPage = document.querySelector(".secondPage").querySelector(".pageWrap");
 var l = document.querySelector(".location"); //第一頁縣市名
-var weatherIMG = document.querySelector(".weatherIMG");
+var weatherIMG = document.querySelectorAll(".weatherIMG");
 var currentT = document.querySelector(".currentT").querySelector("span");
 var weatherP = document.querySelector(".weatherP");
 var weatherInfos = document.querySelector(".weatherInfo").querySelectorAll("li");
@@ -43,7 +44,7 @@ function setInfos(num) {
     (parseInt(getInfos[num].minT) + parseInt(getInfos[num].maxT)) / 2
   );
 
-  wxLite(getInfos[num].wxV, weatherP, weatherIMG);
+  wxLite(getInfos[num].wxV, weatherP, weatherIMG[0]);
 
   weatherInfos[0].querySelector(".pop").innerHTML = getInfos[num].pop + "%";
   weatherInfos[1].querySelector(".ci").innerHTML = getInfos[num].ci;
@@ -69,18 +70,20 @@ function setInfos2(num, now = 1) {
   currentNum = num;
   //current = true;
   //l.innerHTML = getInfos[num].location;
+  console.log(num);
 
   //wxLite(num);
   aWeekWeathers();
   writeMsg(now);
   whereLocalWeek();
+  secondPage.style.opacity = "1";
   //if (infoLength == null) {
   //  infoLength = getInfos.length;
   //}
 }
 
 //判斷晴、陰、雨、雪天
-function wxLite(whichData, p, img) {
+function wxLite(whichData, p = null, img = null) {
   var value = parseInt(whichData);
   switch (value) {
     case 1:
@@ -94,26 +97,42 @@ function wxLite(whichData, p, img) {
     case 26:
     case 27:
     case 28:
-      p.innerHTML = "晴";
-      img.style.background = "url(img/sunIMG.svg) no-repeat";
+      if (p != null) {
+        p.innerHTML = "晴";
+      }
+      if (img != null) {
+        img.style.background = "url(img/sunIMG.svg) no-repeat";
+      }
       break;
 
     case 7:
     case 8:
     case 9:
     case 10:
-      p.innerHTML = "陰";
-      //img.style.background = "url(img/sunIMG.svg) no-repeat";
+      if (p != null) {
+        p.innerHTML = "陰";
+      }
+      if (img != null) {
+        img.style.background = "url(img/cloudIMG.svg) no-repeat";
+      }
       break;
 
     case 42:
-      p.innerHTML = "雪";
-      //img.style.background = "url(img/sunIMG.svg) no-repeat";
+      if (p != null) {
+        p.innerHTML = "雪";
+      }
+      if (img != null) {
+        img.style.background = "url(img/snowIMG.svg) no-repeat";
+      }
       break;
 
     default:
-      p.innerHTML = "雨";
-      //img.style.background = "url(img/sunIMG.svg) no-repeat";
+      if (p != null) {
+        p.innerHTML = "雨";
+      }
+      if (img != null) {
+        img.style.background = "url(img/rainIMG.svg) no-repeat";
+      }
       break;
   }
 }
@@ -127,6 +146,7 @@ function writeMsg(now) {
   localInfos[4].querySelector("span").innerHTML = getInfos2[currentNum].rh[now] + "%";
   localInfos[5].querySelector("span").innerHTML = getInfos2[currentNum].pop12h[now] + "%";
   localInfos[6].querySelector("span").innerHTML = getInfos2[currentNum].wd[now];
+  wxLite(getInfos2[currentNum].wxV[now] * 1, null, weatherIMG[1]);
   //console.log(getInfos2[currentNum]);
 }
 
@@ -287,6 +307,23 @@ function searchW(localValue) {
   }
 }
 
+//第二頁搜尋地區天氣
+function searchW2(localValue) {
+  for (i = 0; i < getInfos2.length; i++) {
+    if (getInfos2[i].location == localValue) {
+      //search = true;
+      //currentNum = i;
+      secondPage.style.opacity = "0";
+      setTimeout("setInfos2(" + i + ")", 2000);
+      //clearTimeout(timer);
+      //timer = setTimeout(function () {
+      //  search = false;
+      //}, 10000);
+    } else {
+      continue;
+    }
+  }
+}
 
 //第二頁改變日期天氣
 function changeW(whatTurn = true) {

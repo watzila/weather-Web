@@ -32,6 +32,14 @@ option {
   position: relative;
   height: 100%;
   margin: 0 135px;
+  -webkit-transition: opacity 1s ease-in-out;
+  transition: opacity 1s ease-in-out;
+}
+
+.weatherIMG {
+  width: 100%;
+  height: 100%;
+  background: url(img/sunIMG.svg);
 }
 
 .eyes {
@@ -58,6 +66,25 @@ option {
 .eyes .r {
   top: 45%;
   left: 55%;
+}
+
+.searchBTN {
+  position: absolute;
+  top: 30%;
+  left: 8%;
+  width: 20px;
+  height: 20px;
+  background: url(img/searchIMG.svg) no-repeat center;
+  cursor: pointer;
+}
+
+.searchBTN:hover {
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
 }
 
 .firstPage {
@@ -89,8 +116,7 @@ option {
   padding-top: 100px;
 }
 
-.mainPage .searchBox,
-.mainPage select {
+.mainPage .searchBox {
   position: absolute;
   top: 10%;
   right: 135px;
@@ -102,8 +128,7 @@ option {
   z-index: 1;
 }
 
-.mainPage .searchBox input,
-.mainPage select input {
+.mainPage .searchBox input {
   width: 170px;
   height: 100%;
   padding: 10px 10px 10px 30px;
@@ -111,33 +136,6 @@ option {
   letter-spacing: 10px;
   font: 20px "源柔ゴシック", "sans-serif";
   color: #8ad0d3;
-}
-
-.mainPage .searchBox .searchBTN,
-.mainPage select .searchBTN {
-  position: absolute;
-  top: 30%;
-  left: 8%;
-  width: 20px;
-  height: 20px;
-  background: url(img/searchIMG.svg) no-repeat center;
-  cursor: pointer;
-}
-
-.mainPage .searchBox .searchBTN:hover,
-.mainPage select .searchBTN:hover {
-  -webkit-transform: scale(1.3);
-          transform: scale(1.3);
-  -webkit-transition: -webkit-transform 0.2s ease-in-out;
-  transition: -webkit-transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out;
-  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
-}
-
-.mainPage .pageWrap {
-  opacity: 0;
-  -webkit-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out;
 }
 
 .mainPage h3 {
@@ -153,12 +151,6 @@ option {
   position: relative;
   width: 500px;
   height: 500px;
-}
-
-.mainPage .weather .weatherWrap .weatherIMG {
-  width: 500px;
-  height: 500px;
-  background: url(img/sunIMG.svg);
 }
 
 .mainPage .weather .temperature {
@@ -228,17 +220,33 @@ option {
   overflow: hidden;
 }
 
-.secondPage .currentInfo option {
-  outline: none;
+.secondPage .currentInfo .searchBox2 {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 200px;
+  padding: 10px;
+  border: 5px solid #cccccc;
+  -webkit-box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #fff, 4px 4px 10px #ccc inset, -4px -4px 5px #fff inset;
+          box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #fff, 4px 4px 10px #ccc inset, -4px -4px 5px #fff inset;
+  z-index: 1;
+}
+
+.secondPage .currentInfo .searchBox2 input {
+  width: 160px;
+  padding-left: 30px;
+  text-align: center;
+  letter-spacing: 10px;
+  font: 20px "源柔ゴシック", "sans-serif";
+  color: #8ad0d3;
 }
 
 .secondPage .currentInfo .weatherWrap {
   position: relative;
-  right: 5%;
+  right: 8%;
   float: right;
   width: 500px;
   height: 500px;
-  background: url(img/sunIMG.svg) no-repeat center;
 }
 
 .secondPage .currentInfo .localInfos {
@@ -250,16 +258,23 @@ option {
 }
 
 .secondPage .changeW {
-  text-align: center;
+  width: 16%;
+  margin: 0 auto;
 }
 
 .secondPage .changeW button {
-  width: 10%;
-  padding: 1%;
-  margin-left: 1%;
-  background-color: red;
+  width: 35%;
   cursor: pointer;
   z-index: 1;
+}
+
+.secondPage .changeW button:nth-child(2) {
+  float: right;
+}
+
+.secondPage .changeW button:hover {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 
 .secondPage .oneWeekW {
@@ -268,6 +283,28 @@ option {
   height: 260px;
   margin: 0 auto;
   overflow: hidden;
+}
+
+.secondPage .oneWeekW:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 520px;
+  height: 265px;
+  background: url(img/targetBG.svg) no-repeat center;
+}
+
+.secondPage .oneWeekW:after {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  width: 270px;
+  height: 230px;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: url(img/targetIMG.svg) no-repeat center;
 }
 
 .secondPage .oneWeekW #one,
@@ -309,6 +346,7 @@ option {
 .secondPage .oneWeekW .oneDayW .wrapW2 .currentIMG,
 .secondPage .oneWeekW .oneDayW .wrapW3 .currentIMG,
 .secondPage .oneWeekW .oneDayW .wrapW4 .currentIMG {
+  width: 55%;
   height: 100%;
   background: url(img/sunIMG.svg) no-repeat;
 }
@@ -336,27 +374,5 @@ option {
 .secondPage .oneWeekW .oneDayW .wrapW4 .dayInfos p:nth-child(2) {
   font: 20px "源柔ゴシック", "sans-serif";
   color: white;
-}
-
-.secondPage .oneWeekW:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 520px;
-  height: 265px;
-  background: url(img/targetBG.svg) no-repeat center;
-}
-
-.secondPage .oneWeekW:after {
-  content: "";
-  position: absolute;
-  top: 40px;
-  left: 50%;
-  width: 270px;
-  height: 230px;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  background: url(img/targetIMG.svg) no-repeat center;
 }
 /*# sourceMappingURL=weather.css.map */

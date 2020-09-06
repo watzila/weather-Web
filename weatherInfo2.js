@@ -40,6 +40,7 @@ function locatInfos2(localWeathers) {
     //console.log(wxs[0]);
   }
   console.log(dataOK2);
+  console.log(infoLs2);
   updateInfos2(dataOK2);
   setInfos2(25);
 }
@@ -64,8 +65,8 @@ function getWeekWeather(whatInfo, type = 1) {
   var infosOK = [];
   switch (type) {
     case 1:
-      for (j = 0; j < whatInfo.time.length - 1; j++) {
-        if (j % 2 != 0) {
+      for (j = 0; j < whatInfo.time.length; j++) {
+        if (j % 2 == 0) {
           var thisInfo = whatInfo.time[j].elementValue[0].value;
           infosOK.push(thisInfo);
         } else {
@@ -84,8 +85,8 @@ function getWeekWeather(whatInfo, type = 1) {
       break;
 
     case 3:
-      for (j = 0; j < whatInfo.time.length - 1; j++) {
-        if (j % 2 != 0) {
+      for (j = 0; j < whatInfo.time.length; j++) {
+        if (j % 2 == 0) {
           var thisInfo = whatInfo.time[j].elementValue[1].value;
           infosOK.push(thisInfo);
         } else {

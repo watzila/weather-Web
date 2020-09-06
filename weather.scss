@@ -38,8 +38,15 @@ option {
   position: relative;
   height: 100%;
   margin: 0 135px;
+  transition: opacity 1s ease-in-out;
   //padding: 100px 0 50px;
   //background: rgb(216, 147, 147);
+}
+
+.weatherIMG {
+  width: 100%;
+  height: 100%;
+  background: url(img/sunIMG.svg);
 }
 
 .eyes {
@@ -65,6 +72,22 @@ option {
     left: 55%;
   }
 }
+.searchBTN {
+  position: absolute;
+  top: 30%;
+  left: 8%;
+  width: 20px;
+  height: 20px;
+  //vertical-align: middle;
+  background: url(img/searchIMG.svg) no-repeat center;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.3);
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
 .firstPage {
   height: 1800px;
   background: #afd1d2;
@@ -92,8 +115,7 @@ option {
   //height: 900px;
   padding-top: 100px;
 
-  .searchBox,
-  select {
+  .searchBox {
     position: absolute;
     top: 10%;
     right: 135px;
@@ -113,25 +135,6 @@ option {
       letter-spacing: 10px;
       @include fontSet(20, $fontColor);
     }
-    .searchBTN {
-      position: absolute;
-      top: 30%;
-      left: 8%;
-      width: 20px;
-      height: 20px;
-      //vertical-align: middle;
-      background: url(img/searchIMG.svg) no-repeat center;
-      cursor: pointer;
-    }
-    .searchBTN:hover {
-      transform: scale(1.3);
-      transition: transform 0.2s ease-in-out;
-    }
-  }
-
-  .pageWrap {
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
   }
 
   h3 {
@@ -149,12 +152,6 @@ option {
       position: relative;
       width: 500px;
       height: 500px;
-
-      .weatherIMG {
-        width: 500px;
-        height: 500px;
-        background: url(img/sunIMG.svg);
-      }
     }
     .temperature {
       padding-left: 90px;
@@ -218,17 +215,32 @@ option {
     margin-bottom: 7%;
     overflow: hidden;
 
-    option {
-      outline: none;
+    .searchBox2 {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 200px;
+      padding: 10px;
+      border: 5px solid #cccccc;
+      box-shadow: 4px 4px 10px #cccccc, -4px -4px 10px #fff, 4px 4px 10px #ccc inset,
+        -4px -4px 5px #fff inset;
+      z-index: 1;
+
+      input {
+        width: 160px;
+        padding-left: 30px;
+        text-align: center;
+        letter-spacing: 10px;
+        @include fontSet(20, $fontColor);
+      }
     }
 
     .weatherWrap {
       position: relative;
-      right: 5%;
+      right: 8%;
       float: right;
       width: 500px;
       height: 500px;
-      background: url(img/sunIMG.svg) no-repeat center;
     }
 
     .localInfos {
@@ -240,15 +252,22 @@ option {
   }
 
   .changeW {
-    text-align: center;
+    width: 16%;
+    margin: 0 auto;
+    //background-color: red;
 
     button {
-      width: 10%;
-      padding: 1%;
-      margin-left: 1%;
-      background-color: red;
+      width: 35%;
       cursor: pointer;
       z-index: 1;
+
+      &:nth-child(2) {
+        float: right;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
     }
   }
 
@@ -258,6 +277,27 @@ option {
     height: 260px;
     margin: 0 auto;
     overflow: hidden;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 520px;
+      height: 265px;
+      background: url(img/targetBG.svg) no-repeat center;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 40px;
+      left: 50%;
+      width: 270px;
+      height: 230px;
+      transform: translateX(-50%);
+      background: url(img/targetIMG.svg) no-repeat center;
+    }
 
     #one,
     #three {
@@ -288,9 +328,9 @@ option {
         z-index: 1;
         cursor: pointer;
         background: none;
-        //transform: rotate(-60deg);
 
         .currentIMG {
+          width: 55%;
           height: 100%;
           background: url(img/sunIMG.svg) no-repeat;
         }
@@ -310,27 +350,6 @@ option {
         }
       }
     }
-  }
-
-  .oneWeekW:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 520px;
-    height: 265px;
-    background: url(img/targetBG.svg) no-repeat center;
-  }
-
-  .oneWeekW:after {
-    content: "";
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    width: 270px;
-    height: 230px;
-    transform: translateX(-50%);
-    background: url(img/targetIMG.svg) no-repeat center;
   }
 
   //.wrapW {

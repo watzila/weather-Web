@@ -92,39 +92,42 @@
       <div class="secondPage" onmousemove="eyesMove(event, 2)">
         <div class="pageWrap">
           <div class="currentInfo">
-            <form>
-              <div class="searchBox">
-                <select name="local">
-                  <option value="0">外埔區</option>
-                  <option value="1">大安區</option>
-                  <option value="2">石岡區</option>
-                  <option value="3">沙鹿區</option>
-                  <option value="4">清水區</option>
-                  <option value="5">后里區</option>
-                  <option value="6">梧棲區</option>
-                  <option value="7">潭子區</option>
-                  <option value="8">神岡區</option>
-                  <option value="9">新社區</option>
-                  <option value="10">大雅區</option>
-                  <option value="11">大甲區</option>
-                  <option value="12">東勢區</option>
-                  <option value="13">東區</option>
-                  <option value="14">龍井區</option>
-                  <option value="15">中區</option>
-                  <option value="16">霧峰區</option>
-                  <option value="17">西區</option>
-                  <option value="18">烏日區</option>
-                  <option value="19">南區</option>
-                  <option value="20">大肚區</option>
-                  <option value="21">西屯區</option>
-                  <option value="22">和平區</option>
-                  <option value="23">北區</option>
-                  <option value="24">北屯區</option>
-                  <option value="25" selected>太平區</option>
-                  <option value="26">南屯區</option>
-                  <option value="27">大里區</option>
-                  <option value="28">豐原區</option>
-                </select>
+            <form name="search2" action="javascript:;" onsubmit="searchW2(search2.localText.value)">
+              <div class="searchBox2">
+                <button type="submit" class="searchBTN"></button>
+                <input type="text" list="locals" name="localText" value="太平區">
+                <datalist id="locals">
+                  <option value="外埔區">
+                  <option value="大安區">
+                  <option value="石岡區">
+                  <option value="沙鹿區">
+                  <option value="清水區">
+                  <option value="后里區">
+                  <option value="梧棲區">
+                  <option value="潭子區">
+                  <option value="神岡區">
+                  <option value="新社區">
+                  <option value="大雅區">
+                  <option value="大甲區">
+                  <option value="東勢區">
+                  <option value="東區">
+                  <option value="龍井區">
+                  <option value="中區">
+                  <option value="霧峰區">
+                  <option value="西區">
+                  <option value="烏日區">
+                  <option value="南區">
+                  <option value="大肚區">
+                  <option value="西屯區">
+                  <option value="和平區">
+                  <option value="北區">
+                  <option value="北屯區">
+                  <option value="太平區" selected>
+                  <option value="南屯區">
+                  <option value="大里區">
+                  <option value="豐原區">
+                </datalist>
+                </input>
               </div>
             </form>
             <div class="weatherWrap">
@@ -149,8 +152,8 @@
           </div>
 
           <div class="changeW">
-            <button onclick="changeW(false)">leftTurn</button>
-            <button onclick="changeW()">rightTurn</button>
+            <button onclick="changeW(false)"><img src="img/arrowL.svg"></button>
+            <button onclick="changeW()"><img src="img/arrowR.svg"></button>
           </div>
 
           <div class="oneWeekW">
