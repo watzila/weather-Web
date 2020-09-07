@@ -346,9 +346,9 @@ option {
 .secondPage .oneWeekW .oneDayW .wrapW2 .currentIMG,
 .secondPage .oneWeekW .oneDayW .wrapW3 .currentIMG,
 .secondPage .oneWeekW .oneDayW .wrapW4 .currentIMG {
-  width: 55%;
+  width: 50%;
   height: 100%;
-  background: url(img/sunIMG.svg) no-repeat;
+  background: url(img/sunIMG.svg) no-repeat center;
 }
 
 .secondPage .oneWeekW .oneDayW .wrapW .dayInfos,

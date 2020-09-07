@@ -101,7 +101,7 @@ function wxLite(whichData, p = null, img = null) {
         p.innerHTML = "晴";
       }
       if (img != null) {
-        img.style.background = "url(img/sunIMG.svg) no-repeat";
+        img.style.background = "url(img/sunIMG.svg) no-repeat center";
       }
       break;
 
@@ -113,7 +113,7 @@ function wxLite(whichData, p = null, img = null) {
         p.innerHTML = "陰";
       }
       if (img != null) {
-        img.style.background = "url(img/cloudIMG.svg) no-repeat";
+        img.style.background = "url(img/cloudIMG.svg) no-repeat center";
       }
       break;
 
@@ -122,7 +122,7 @@ function wxLite(whichData, p = null, img = null) {
         p.innerHTML = "雪";
       }
       if (img != null) {
-        img.style.background = "url(img/snowIMG.svg) no-repeat";
+        img.style.background = "url(img/snowIMG.svg) no-repeat center";
       }
       break;
 
@@ -131,7 +131,7 @@ function wxLite(whichData, p = null, img = null) {
         p.innerHTML = "雨";
       }
       if (img != null) {
-        img.style.background = "url(img/rainIMG.svg) no-repeat";
+        img.style.background = "url(img/rainIMG.svg) no-repeat center";
       }
       break;
   }
