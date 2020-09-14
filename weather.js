@@ -37,7 +37,6 @@ function updateInfos2(data) {
 
 //設定第一頁所有顯示的天氣資訊
 function setInfos(num) {
-  //currentNum = num;
   current = true;
   l.innerHTML = getInfos[num].location;
   currentT.innerHTML = Math.round(
@@ -68,18 +67,12 @@ function setInfos(num) {
 //設定第二頁所有顯示的天氣資訊
 function setInfos2(num, now = 1) {
   currentNum = num;
-  //current = true;
-  //l.innerHTML = getInfos[num].location;
-  console.log(num);
+  //console.log(num);
 
-  //wxLite(num);
   aWeekWeathers();
   writeMsg(now);
   whereLocalWeek();
   secondPage.style.opacity = "1";
-  //if (infoLength == null) {
-  //  infoLength = getInfos.length;
-  //}
 }
 
 //判斷晴、陰、雨、雪天
@@ -146,6 +139,7 @@ function writeMsg(now) {
   localInfos[4].innerHTML = getInfos2[currentNum].rh[now];
   localInfos[5].innerHTML = getInfos2[currentNum].pop12h[now];
   localInfos[6].innerHTML = getInfos2[currentNum].wd[now];
+
   wxLite(getInfos2[currentNum].wxV[now] * 1, null, weatherIMG[1]);
   //console.log(getInfos2[currentNum]);
 }
@@ -155,6 +149,7 @@ function aWeekWeathers(grid = null, next = true) {
   let dt2 = new Date();
   var img, p, value;
 
+  //初始算一次未來四天的日期和抓當天的值
   if (grid == null) {
     day = 0;
     for (i = 0; i < oneWeekW.length; i++) {
@@ -168,8 +163,10 @@ function aWeekWeathers(grid = null, next = true) {
       wxLite(getInfos2[currentNum].wxV[i] * 1, p[0], img);
 
       if (dt.getDate() + day > dt2.getDate()) {
-        // value = dt.getDate() + day - dt2.getDate();
-        p[1].innerHTML = `${dt.getMonth() + 2}/${dt.getDate()}(${dayChinese[dt.getUTCDay()]})`;
+        value = dt.getDate() + day - dt2.getDate();
+        dt2.setMonth(dt2.getMonth() + 2);
+        dt2.setDate(value);
+        p[1].innerHTML = `${dt2.getMonth()}/${dt2.getDate()}(${dayChinese[dt2.getUTCDay()]})`;
       } else {
         dt2.setMonth(dt.getMonth());
         dt2.setDate(dt.getDate() + day);
@@ -180,6 +177,7 @@ function aWeekWeathers(grid = null, next = true) {
     }
     day = 1;
   } else {
+    //轉一次算一次上一天或下一天的日期和抓當天的值
     dt2.setMonth(dt2.getMonth() + 1);
     dt2.setDate(0);
     var newDay;
@@ -195,10 +193,11 @@ function aWeekWeathers(grid = null, next = true) {
     wxLite(getInfos2[currentNum].wxV[newDay] * 1, p[0], img);
 
     if (dt.getDate() + day > dt2.getDate()) {
-      // value = dt.getDate() + day - dt2.getDate();
-      p[1].innerHTML = `${dt.getMonth() + 2}/${dt.getDate()}(${dayChinese[dt.getUTCDay()]})`;
+      value = dt.getDate() + day - dt2.getDate();
+      dt2.setMonth(dt2.getMonth() + 2);
+      dt2.setDate(value);
+      p[1].innerHTML = `${dt2.getMonth()}/${dt2.getDate()}(${dayChinese[dt2.getUTCDay()]})`;
     } else {
-      dt2.setMonth(dt.getMonth());
       dt2.setDate(dt.getDate() + newDay);
 
       p[1].innerHTML = `${dt.getMonth() + 1}/${dt2.getDate()}(${dayChinese[dt2.getUTCDay()]})`;
@@ -293,10 +292,12 @@ function convertT(CorF) {
 
 //第一頁搜尋縣市天氣
 function searchW(localValue) {
+  //把'台'轉換成'臺'
+  localValue = localValue[0] == "台" ? "臺" + localValue.slice(1) : localValue;
+
   for (i = 0; i < getInfos.length; i++) {
     if (getInfos[i].location == localValue) {
       search = true;
-      //currentNum = i;
       mainPage.style.opacity = "0";
       setTimeout("setInfos(" + i + ")", 2000);
       clearTimeout(timer);
@@ -313,14 +314,8 @@ function searchW(localValue) {
 function searchW2(localValue) {
   for (i = 0; i < getInfos2.length; i++) {
     if (getInfos2[i].location == localValue) {
-      //search = true;
-      //currentNum = i;
       secondPage.style.opacity = "0";
       setTimeout("setInfos2(" + i + ")", 2000);
-      //clearTimeout(timer);
-      //timer = setTimeout(function () {
-      //  search = false;
-      //}, 10000);
     } else {
       continue;
     }
@@ -330,7 +325,7 @@ function searchW2(localValue) {
 //第二頁改變日期天氣
 function changeW(whatTurn = true) {
   day = whatTurn ? (day - 1 < 0) ? 6 : day - 1 : (day + 1 > 6) ? 0 : day + 1;
-  console.log(day);
+  //console.log(day);
   for (i = 0; i < oneWeekW.length; i++) {
     switch (oneWeekW[i].id) {
       case "one":

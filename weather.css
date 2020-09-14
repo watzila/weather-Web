@@ -167,8 +167,7 @@ option {
 
 .mainPage .weather .temperature {
   padding-left: 9%;
-  margin-top: 5%;
-  overflow: hidden;
+  margin-top: 3%;
 }
 
 .mainPage .weather .temperature .currentT,
@@ -222,13 +221,13 @@ option {
   line-height: 60px;
 }
 
-.secondPage .currentInfo {
+.currentInfo {
   height: 100%;
   margin-bottom: 7%;
   overflow: hidden;
 }
 
-.secondPage .currentInfo .searchBox2 {
+.currentInfo .searchBox2 {
   position: absolute;
   top: 10%;
   right: 7.1%;
@@ -240,7 +239,7 @@ option {
   z-index: 1;
 }
 
-.secondPage .currentInfo .searchBox2 input {
+.currentInfo .searchBox2 input {
   width: 100%;
   padding-left: 25%;
   text-align: center;
@@ -249,7 +248,7 @@ option {
   color: #8ad0d3;
 }
 
-.secondPage .currentInfo .weatherWrap {
+.currentInfo .weatherWrap {
   position: relative;
   right: 8%;
   float: right;
@@ -257,12 +256,12 @@ option {
   height: 51.3vh;
 }
 
-.secondPage .currentInfo .weatherWrap .eyes {
+.currentInfo .weatherWrap .eyes {
   width: 51.3vh;
   height: 51.3vh;
 }
 
-.secondPage .currentInfo .localInfos {
+.currentInfo .localInfos {
   padding: 1.5% 0 0 10%;
   font: 30px "源柔ゴシック", "sans-serif";
   color: #8ad0d3;
@@ -270,27 +269,27 @@ option {
   letter-spacing: 0.7rem;
 }
 
-.secondPage .changeW {
+.changeW {
   width: 16%;
   margin: 0 auto;
 }
 
-.secondPage .changeW button {
+.changeW button {
   width: 35%;
   cursor: pointer;
   z-index: 1;
 }
 
-.secondPage .changeW button:nth-child(2) {
+.changeW button:nth-child(2) {
   float: right;
 }
 
-.secondPage .changeW button:hover {
+.changeW button:hover {
   -webkit-transform: scale(1.2);
           transform: scale(1.2);
 }
 
-.secondPage .oneWeekW {
+.oneWeekW {
   position: relative;
   width: 520px;
   height: 260px;
@@ -298,7 +297,7 @@ option {
   overflow: hidden;
 }
 
-.secondPage .oneWeekW:before {
+.oneWeekW:before {
   content: "";
   position: absolute;
   top: 0;
@@ -308,7 +307,7 @@ option {
   background: url(img/targetBG.svg) no-repeat center;
 }
 
-.secondPage .oneWeekW:after {
+.oneWeekW:after {
   content: "";
   position: absolute;
   top: 15%;
@@ -320,19 +319,19 @@ option {
   background: url(img/targetIMG.svg) no-repeat center;
 }
 
-.secondPage .oneWeekW #one,
-.secondPage .oneWeekW #three {
+.oneWeekW #one,
+.oneWeekW #three {
   -webkit-transition: top 0.3s ease-in, left 0.3s ease-out;
   transition: top 0.3s ease-in, left 0.3s ease-out;
 }
 
-.secondPage .oneWeekW #two,
-.secondPage .oneWeekW #four {
+.oneWeekW #two,
+.oneWeekW #four {
   -webkit-transition: top 0.3s ease-out, left 0.3s ease-in;
   transition: top 0.3s ease-out, left 0.3s ease-in;
 }
 
-.secondPage .oneWeekW .oneDayW {
+.oneWeekW .oneDayW {
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -341,10 +340,10 @@ option {
   text-align: center;
 }
 
-.secondPage .oneWeekW .oneDayW .wrapW,
-.secondPage .oneWeekW .oneDayW .wrapW2,
-.secondPage .oneWeekW .oneDayW .wrapW3,
-.secondPage .oneWeekW .oneDayW .wrapW4 {
+.oneWeekW .oneDayW .wrapW,
+.oneWeekW .oneDayW .wrapW2,
+.oneWeekW .oneDayW .wrapW3,
+.oneWeekW .oneDayW .wrapW4 {
   position: absolute;
   width: 29%;
   height: 17%;
@@ -355,36 +354,36 @@ option {
   background: none;
 }
 
-.secondPage .oneWeekW .oneDayW .wrapW .currentIMG,
-.secondPage .oneWeekW .oneDayW .wrapW2 .currentIMG,
-.secondPage .oneWeekW .oneDayW .wrapW3 .currentIMG,
-.secondPage .oneWeekW .oneDayW .wrapW4 .currentIMG {
+.oneWeekW .oneDayW .wrapW .currentIMG,
+.oneWeekW .oneDayW .wrapW2 .currentIMG,
+.oneWeekW .oneDayW .wrapW3 .currentIMG,
+.oneWeekW .oneDayW .wrapW4 .currentIMG {
   width: 50%;
   height: 100%;
   background: url(img/sunIMG.svg) no-repeat center;
 }
 
-.secondPage .oneWeekW .oneDayW .wrapW .dayInfos,
-.secondPage .oneWeekW .oneDayW .wrapW2 .dayInfos,
-.secondPage .oneWeekW .oneDayW .wrapW3 .dayInfos,
-.secondPage .oneWeekW .oneDayW .wrapW4 .dayInfos {
+.oneWeekW .oneDayW .wrapW .dayInfos,
+.oneWeekW .oneDayW .wrapW2 .dayInfos,
+.oneWeekW .oneDayW .wrapW3 .dayInfos,
+.oneWeekW .oneDayW .wrapW4 .dayInfos {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-.secondPage .oneWeekW .oneDayW .wrapW .dayInfos p:nth-child(1),
-.secondPage .oneWeekW .oneDayW .wrapW2 .dayInfos p:nth-child(1),
-.secondPage .oneWeekW .oneDayW .wrapW3 .dayInfos p:nth-child(1),
-.secondPage .oneWeekW .oneDayW .wrapW4 .dayInfos p:nth-child(1) {
+.oneWeekW .oneDayW .wrapW .dayInfos p:nth-child(1),
+.oneWeekW .oneDayW .wrapW2 .dayInfos p:nth-child(1),
+.oneWeekW .oneDayW .wrapW3 .dayInfos p:nth-child(1),
+.oneWeekW .oneDayW .wrapW4 .dayInfos p:nth-child(1) {
   font: 40px "源柔ゴシック", "sans-serif";
   color: white;
 }
 
-.secondPage .oneWeekW .oneDayW .wrapW .dayInfos p:nth-child(2),
-.secondPage .oneWeekW .oneDayW .wrapW2 .dayInfos p:nth-child(2),
-.secondPage .oneWeekW .oneDayW .wrapW3 .dayInfos p:nth-child(2),
-.secondPage .oneWeekW .oneDayW .wrapW4 .dayInfos p:nth-child(2) {
+.oneWeekW .oneDayW .wrapW .dayInfos p:nth-child(2),
+.oneWeekW .oneDayW .wrapW2 .dayInfos p:nth-child(2),
+.oneWeekW .oneDayW .wrapW3 .dayInfos p:nth-child(2),
+.oneWeekW .oneDayW .wrapW4 .dayInfos p:nth-child(2) {
   font: 20px "源柔ゴシック", "sans-serif";
   color: white;
 }
