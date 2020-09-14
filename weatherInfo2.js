@@ -39,8 +39,8 @@ function locatInfos2(localWeathers) {
     dataOK2.push(data2);
     //console.log(wxs[0]);
   }
-  //console.log(dataOK2);
-  //console.log(infoLs2);
+  console.log(dataOK2);
+  console.log(infoLs2);
   updateInfos2(dataOK2);
   setInfos2(25);
 }

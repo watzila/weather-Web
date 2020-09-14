@@ -104,6 +104,7 @@ option {
   left: 50%;
   width: 58vh;
   height: 58vh;
+  background: url(img/sun.svg) no-repeat center;
 }
 
 .firstPage .weatherWrap .eyes {
