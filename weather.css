@@ -15,6 +15,10 @@ li {
   list-style: none;
 }
 
+i {
+  font-style: normal;
+}
+
 input,
 button,
 select,
@@ -31,7 +35,7 @@ option {
 .pageWrap {
   position: relative;
   height: 100%;
-  margin: 0 135px;
+  padding: 10vh 7.1% 0;
   -webkit-transition: opacity 1s ease-in-out;
   transition: opacity 1s ease-in-out;
 }
@@ -88,21 +92,19 @@ option {
 }
 
 .firstPage {
-  height: 1800px;
+  height: 100vh;
   background: #afd1d2;
-  padding-top: 100px;
 }
 
 .firstPage .firstWrap {
-  height: 900px;
-  margin: 0 135px;
+  padding: 10vh 7.1% 0;
 }
 
 .firstPage .weatherWrap {
   position: relative;
+  left: 50%;
   width: 566px;
   height: 566px;
-  margin-left: 50%;
 }
 
 .firstPage h1 {
@@ -113,13 +115,13 @@ option {
 
 .mainPage {
   position: relative;
-  padding-top: 100px;
+  height: 100vh;
 }
 
 .mainPage .searchBox {
   position: absolute;
   top: 10%;
-  right: 135px;
+  right: 7.1%;
   height: 60px;
   padding: 10px;
   border: 5px solid #cccccc;
@@ -144,7 +146,8 @@ option {
 }
 
 .mainPage .weather {
-  margin: 40px 40px 100px;
+  position: relative;
+  margin: 4% 4% 10%;
 }
 
 .mainPage .weather .weatherWrap {
@@ -154,8 +157,8 @@ option {
 }
 
 .mainPage .weather .temperature {
-  padding-left: 90px;
-  margin-top: 50px;
+  padding-left: 9%;
+  margin-top: 5%;
   overflow: hidden;
 }
 
@@ -166,8 +169,8 @@ option {
 
 .mainPage .weather .temperature .currentT ul,
 .mainPage .weather .temperature .weatherP ul {
-  float: right;
-  margin: 35px 0 0 10px;
+  display: inline-block;
+  margin-left: 0.02%;
 }
 
 .mainPage .weather .temperature .currentT ul li:nth-child(1),
@@ -192,7 +195,7 @@ option {
 
 .mainPage .weatherInfo {
   position: absolute;
-  top: 138px;
+  top: 0%;
   left: 50%;
   font: 30px "源柔ゴシック", "sans-serif";
   color: #8ad0d3;
@@ -202,16 +205,12 @@ option {
 
 .mainPage .date {
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 5%;
+  right: 7.1%;
   font: 60px "源柔ゴシック", "sans-serif";
   color: #8ad0d3;
   text-align: right;
   line-height: 60px;
-}
-
-.secondPage {
-  padding-top: 100px;
 }
 
 .secondPage .currentInfo {
@@ -222,7 +221,7 @@ option {
 
 .secondPage .currentInfo .searchBox2 {
   position: absolute;
-  top: 0;
+  top: 10%;
   right: 0;
   width: 200px;
   padding: 10px;

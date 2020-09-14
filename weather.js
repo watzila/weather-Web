@@ -10,8 +10,8 @@ var l = document.querySelector(".location"); //第一頁縣市名
 var weatherIMG = document.querySelectorAll(".weatherIMG");
 var currentT = document.querySelector(".currentT").querySelector("span");
 var weatherP = document.querySelector(".weatherP");
-var weatherInfos = document.querySelector(".weatherInfo").querySelectorAll("li");
-var localInfos = document.querySelector(".localInfos").querySelectorAll("li");
+var weatherInfos = document.querySelector(".weatherInfo").querySelectorAll("span");
+var localInfos = document.querySelector(".localInfos").querySelectorAll("span");
 var oneWeekW = document.querySelector(".oneDayW").querySelectorAll("button");
 var date = document.querySelector(".date").querySelectorAll("li");
 
@@ -46,11 +46,11 @@ function setInfos(num) {
 
   wxLite(getInfos[num].wxV, weatherP, weatherIMG[0]);
 
-  weatherInfos[0].querySelector(".pop").innerHTML = getInfos[num].pop + "%";
-  weatherInfos[1].querySelector(".ci").innerHTML = getInfos[num].ci;
-  weatherInfos[2].querySelector(".currentWX").innerHTML = getInfos[num].wx;
-  weatherInfos[3].querySelector(".minT").innerHTML = getInfos[num].minT + "˚C";
-  weatherInfos[4].querySelector(".maxT").innerHTML = getInfos[num].maxT + "˚C";
+  weatherInfos[0].innerHTML = getInfos[num].pop;
+  weatherInfos[1].innerHTML = getInfos[num].ci;
+  weatherInfos[2].innerHTML = getInfos[num].wx;
+  weatherInfos[3].innerHTML = getInfos[num].minT;
+  weatherInfos[4].innerHTML = getInfos[num].maxT;
 
   date[0].querySelector(".year").innerHTML = dt.getFullYear();
   date[1].querySelector(".month").innerHTML = monthEnglish[dt.getMonth()];
@@ -139,13 +139,13 @@ function wxLite(whichData, p = null, img = null) {
 
 //第二頁設置天氣資訊
 function writeMsg(now) {
-  localInfos[0].querySelector("span").innerHTML = getInfos2[currentNum].wx[now];
-  localInfos[1].querySelector("span").innerHTML = getInfos2[currentNum].t[now] + "˚C";
-  localInfos[2].querySelector("span").innerHTML = getInfos2[currentNum].at[now] + "˚C";
-  localInfos[3].querySelector("span").innerHTML = getInfos2[currentNum].uvi[now];
-  localInfos[4].querySelector("span").innerHTML = getInfos2[currentNum].rh[now] + "%";
-  localInfos[5].querySelector("span").innerHTML = getInfos2[currentNum].pop12h[now] + "%";
-  localInfos[6].querySelector("span").innerHTML = getInfos2[currentNum].wd[now];
+  localInfos[0].innerHTML = getInfos2[currentNum].wx[now];
+  localInfos[1].innerHTML = getInfos2[currentNum].t[now];
+  localInfos[2].innerHTML = getInfos2[currentNum].at[now];
+  localInfos[3].innerHTML = getInfos2[currentNum].uvi[now];
+  localInfos[4].innerHTML = getInfos2[currentNum].rh[now];
+  localInfos[5].innerHTML = getInfos2[currentNum].pop12h[now];
+  localInfos[6].innerHTML = getInfos2[currentNum].wd[now];
   wxLite(getInfos2[currentNum].wxV[now] * 1, null, weatherIMG[1]);
   //console.log(getInfos2[currentNum]);
 }
@@ -242,21 +242,23 @@ function changeInfos(num) {
 //眼睛看著鼠標
 function eyesMove(e, i) {
   var eyeLX, eyeLRY, eyeRX;
+  //鼠標位置
   var x = e.clientX;
   var y = e.clientY;
+  //算鼠標到天氣圖的距離
   var directionLX = (x - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2)) * 5;
   var directionLY = (y - (weatherWrap[i].offsetTop + weatherWrap[i].offsetHeight / 2)) * 5;
+  //算從天氣中心到螢幕右邊的距離
+  var rightWidth = (window.innerWidth - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2));
 
   if (directionLX < 0) {
     eyeLX = directionLX / (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2);
     eyeRX = (directionLX * 2) / (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2);
   } else {
     eyeLX =
-      (directionLX * 2) /
-      (window.innerWidth - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2));
+      (directionLX * 2) / rightWidth;
     eyeRX =
-      directionLX /
-      (window.innerWidth - (weatherWrap[i].offsetLeft + weatherWrap[i].offsetWidth / 2));
+      directionLX / rightWidth;
   }
   if (directionLY < 0) {
     eyeLRY = directionLY / (weatherWrap[i].offsetTop + weatherWrap[i].offsetHeight / 2);
@@ -385,41 +387,3 @@ function changeW(whatTurn = true) {
   }
   writeMsg(day);
 }
-
-
-
-//function changeW(event) {
-//  var mouseY = event.clientY;
-
-//  document.addEventListener("mousemove", move);
-//  document.addEventListener("mouseup", function () {
-//    document.removeEventListener("mousemove", move);
-//  });
-
-//  function move(event) {
-//    //console.log(newValueY);
-//    let newValueX, newValueY;
-//    if (event.clientY - mouseY > 0) {
-//      switch (oneWeekW[0].id) {
-//        case "1":
-//          newValueY = (parseInt(oneWeekW[0].style.top) < 5) ? 5 : parseFloat(oneWeekW[0].style.top) - (event.clientY - mouseY) * 0.01;
-//          newValueX = (parseInt(oneWeekW[0].style.left) > 35) ? 35 : parseFloat(oneWeekW[0].style.left) + (event.clientY - mouseY) * 0.01;
-//          oneWeekW[0].style.top = newValueY + "%";
-//          oneWeekW[0].style.left = newValueX + "%";
-//          break;
-
-//        case "2":
-
-//          break;
-
-//        case "3":
-
-//          break;
-
-//        case "4":
-
-//          break;
-//      }
-//    }
-//  }
-//}

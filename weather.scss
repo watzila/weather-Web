@@ -21,6 +21,10 @@ li {
   list-style: none;
 }
 
+i {
+  font-style: normal;
+}
+
 input,
 button,
 select,
@@ -37,7 +41,8 @@ option {
 .pageWrap {
   position: relative;
   height: 100%;
-  margin: 0 135px;
+  padding: 10vh 7.1% 0;
+  //margin: 0 135px;
   transition: opacity 1s ease-in-out;
   //padding: 100px 0 50px;
   //background: rgb(216, 147, 147);
@@ -89,20 +94,20 @@ option {
 }
 
 .firstPage {
-  height: 1800px;
+  height: 100vh;
   background: #afd1d2;
-  padding-top: 100px;
 
   .firstWrap {
-    height: 900px;
-    margin: 0 135px;
+    //height: 900px;
+    padding: 10vh 7.1% 0;
+    //margin: 0 135px;
     //background: rgb(233, 233, 233);
   }
   .weatherWrap {
     position: relative;
+    left: 50%;
     width: 566px;
     height: 566px;
-    margin-left: 50%;
   }
   h1 {
     margin-top: 8%;
@@ -112,13 +117,13 @@ option {
 
 .mainPage {
   position: relative;
-  //height: 900px;
-  padding-top: 100px;
+  height: 100vh;
+  //padding-top: 100px;
 
   .searchBox {
     position: absolute;
     top: 10%;
-    right: 135px;
+    right: 7.1%;
     //width: 200px;
     height: 60px;
     padding: 10px;
@@ -144,9 +149,9 @@ option {
   }
 
   .weather {
-    //position: absolute;
+    position: relative;
     //top: 10%;
-    margin: 40px 40px 100px;
+    margin: 4% 4% 10%;
 
     .weatherWrap {
       position: relative;
@@ -154,8 +159,8 @@ option {
       height: 500px;
     }
     .temperature {
-      padding-left: 90px;
-      margin-top: 50px;
+      padding-left: 9%;
+      margin-top: 5%;
       overflow: hidden;
 
       .currentT,
@@ -163,8 +168,8 @@ option {
         float: left;
 
         ul {
-          float: right;
-          margin: 35px 0 0 10px;
+          display: inline-block;
+          margin-left: 0.02%;
 
           li:nth-child(1) {
             border-bottom: 1px solid $fontColor;
@@ -188,7 +193,7 @@ option {
 
   .weatherInfo {
     position: absolute;
-    top: 138px;
+    top: 0%;
     left: 50%;
     @include fontSet(30, $fontColor);
     line-height: 60px;
@@ -197,8 +202,8 @@ option {
 
   .date {
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 5%;
+    right: 7.1%;
     @include fontSet(60, $fontColor);
     text-align: right;
     line-height: 60px;
@@ -207,7 +212,7 @@ option {
 
 .secondPage {
   //height: 1000px;
-  padding-top: 100px;
+  //padding-top: 100px;
   //background: lightcoral;
 
   .currentInfo {
@@ -217,7 +222,7 @@ option {
 
     .searchBox2 {
       position: absolute;
-      top: 0;
+      top: 10%;
       right: 0;
       width: 200px;
       padding: 10px;
